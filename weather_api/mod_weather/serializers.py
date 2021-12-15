@@ -1,7 +1,5 @@
 from datetime import date
-
 from sqlalchemy import inspect
-
 
 
 class Serializer(object):

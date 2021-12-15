@@ -1,7 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
 from mod_weather.database import db
 from mod_weather.serializers import Serializer
-
 
 
 class City(db.Model, Serializer):

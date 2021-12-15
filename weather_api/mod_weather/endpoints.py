@@ -1,9 +1,6 @@
 import json
-
-from flask import session
-from sqlalchemy import func, select, sql, and_
+from sqlalchemy import func, and_
 from mod_weather.models import City, Weather
-from datetime import datetime
 from mod_weather.database import db
 
 
