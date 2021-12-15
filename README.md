@@ -10,4 +10,5 @@ Instruction:
 5. To run the server go to the weather_api folder and run command
     * ```python manage.py runserver```
 6. When server is start you can use request_samples.py file
+    * run ```python3 request_samples.py```
 
