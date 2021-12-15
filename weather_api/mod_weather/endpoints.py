@@ -1,15 +1,18 @@
 import json
-from sqlalchemy import func, and_
-from mod_weather.models import City, Weather
+
 from mod_weather.database import db
+from mod_weather.models import City
+from mod_weather.models import Weather
+from sqlalchemy import and_
+from sqlalchemy import func
 
 
-def city_id(name):
+def city_id(name: str) -> json:
     city = City.query.filter_by(name=name).first()
     return json.dumps(city.serialize())
 
 
-def cities():
+def cities() -> list:
     city = City.query.all()
     data = City.serialize_list(city)
     list_of_cities = []
@@ -21,7 +24,7 @@ def cities():
     return list_of_cities
 
 
-def mean(value_type, city):
+def mean(value_type: str, city: str) -> json:
     city_name = City.query.filter_by(name=city).first()
     city_id = city_name.serialize()
     id = city_id.get('id')
@@ -34,7 +37,7 @@ def mean(value_type, city):
     }
 
 
-def records(city, start_dt, end_dt):
+def records(city: str, start_dt: str, end_dt: str) -> json:
     city_name = City.query.filter_by(name=city).first()
     city_id = city_name.serialize()
     id = city_id.get('id')
@@ -51,7 +54,7 @@ def records(city, start_dt, end_dt):
     }
 
 
-def moving_mean(value_type, city):
+def moving_mean(value_type: str, city: str) -> json:
     city_name = City.query.filter_by(name=city).first()
     city_id = city_name.serialize()
     id = city_id.get('id')

@@ -1,3 +1,5 @@
+from typing import Any
+
 from mod_weather.database import db
 from mod_weather.serializers import Serializer
 
@@ -6,7 +8,7 @@ class City(db.Model, Serializer):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), unique=True)
 
-    def serialize(self):
+    def serialize(self) -> dict[Any, str]:
         data = Serializer.serialize(self)
         return data
 
@@ -22,6 +24,6 @@ class Weather(db.Model, Serializer):
     humidity = db.Column(db.Integer)
     wind_speed = db.Column(db.Integer)
 
-    def serialize(self):
+    def serialize(self) -> dict[Any, str]:
         data = Serializer.serialize(self)
         return data

@@ -1,10 +1,11 @@
 from datetime import date
+from typing import Any
+
 from sqlalchemy import inspect
 
 
-class Serializer(object):
-
-    def serialize(self):
+class Serializer:
+    def serialize(self) -> dict[Any, str]:
         dct = {}
         for key, value in inspect(self).attrs.items():
             if isinstance(value.value, date):
@@ -14,5 +15,5 @@ class Serializer(object):
         return dct
 
     @staticmethod
-    def serialize_list(l):
-        return [m.serialize() for m in l]
+    def serialize_list(lst):
+        return [item.serialize() for item in lst]

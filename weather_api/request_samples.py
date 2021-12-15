@@ -1,5 +1,6 @@
-import requests
 import json
+
+import requests
 
 cities_url = 'http://127.0.0.1:5000/cities'
 cities = requests.get(cities_url)

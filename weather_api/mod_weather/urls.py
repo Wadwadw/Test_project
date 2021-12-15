@@ -1,25 +1,28 @@
-from flask_restful import Resource
-from mod_weather.endpoints import cities, mean, records, moving_mean
 from flask import request
+from flask_restful import Resource
+from mod_weather.endpoints import cities
+from mod_weather.endpoints import mean
+from mod_weather.endpoints import moving_mean
+from mod_weather.endpoints import records
 
 
 class Cities(Resource):
-
-    def get(self):
+    @staticmethod
+    def get():
         return cities()
 
 
 class Mean(Resource):
-
-    def get(self):
+    @staticmethod
+    def get():
         value_type = request.args.get('value_type')
         city = request.args.get('city')
         return mean(value_type=value_type, city=city)
 
 
 class Records(Resource):
-
-    def get(self):
+    @staticmethod
+    def get():
         city = request.args.get('city')
         start_dt = request.args.get('start_dt')
         end_dt = request.args.get('end_dt')
@@ -27,8 +30,8 @@ class Records(Resource):
 
 
 class MovingMean(Resource):
-
-    def get(self):
+    @staticmethod
+    def get():
         value_type = request.args.get('value_type')
         city = request.args.get('city')
         return moving_mean(value_type=value_type, city=city)
